@@ -1,0 +1,10 @@
+[package]
+name = "tokay_web_playground"
+version = "0.1.0"\nedition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+tokay = { path = "..", default-features = false }
+wasm-bindgen = "0.2"

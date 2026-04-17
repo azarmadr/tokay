@@ -37,6 +37,8 @@ Tokay is inspired by [awk](https://en.wikipedia.org/wiki/AWK), has syntactic and
 
 Tokay is still a very young project and gains much potential. Currently, development is going towards generic parselets (a speciality of Tokay) and a [WebAssembly-based development environment](https://github.com/tokay-lang/tokay-wasm).
 
+A simple browser playground is available at [playground.tokay.dev](https://playground.tokay.dev).
+
 [Volunteers are welcome!](CONTRIBUTING.md)
 
 ## Highlights

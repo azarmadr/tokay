@@ -1,0 +1,29 @@
+name: Deploy Playground
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'web-playground/**'
+      - '.github/workflows/playground.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - name: Build playground
+        run: cd web-playground && wasm-pack build --target web --out-dir pkg
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web-playground
+          cname: playground.tokay.dev
